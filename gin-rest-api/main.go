@@ -5,7 +5,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	docs "github.com/svm-code/go/rest-api/docs"
+	docs "github.com/svm-code/go/gin-rest-api/docs"
 	swaggofiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
