@@ -1,0 +1,156 @@
+basePath: /
+definitions:
+  daos.Employee:
+    properties:
+      address:
+        type: string
+      deptId:
+        type: integer
+      email:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      phone:
+        type: integer
+    type: object
+  daos.EmployeeModel:
+    properties:
+      address:
+        type: string
+      deptId:
+        type: integer
+      email:
+        type: string
+      name:
+        type: string
+      phone:
+        type: integer
+    type: object
+  utils.response:
+    properties:
+      data: {}
+      result:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: suraj.more@quickheal.com
+    name: API Support
+  description: This is a simple crud opration for employee
+  license:
+    name: Quick Heal
+    url: https://www.quickheal.com/useful-tools
+  termsOfService: http://swagger.io/terms/
+  title: E.M.S. API's
+  version: "1.0"
+paths:
+  /emp:
+    get:
+      consumes:
+      - application/json
+      description: Get details of all employees
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/daos.Employee'
+            type: array
+      summary: Get details of all employees
+      tags:
+      - all-employes
+    post:
+      consumes:
+      - application/json
+      description: Create new employee
+      parameters:
+      - description: Create Emplopyee
+        in: body
+        name: employee
+        required: true
+        schema:
+          $ref: '#/definitions/daos.EmployeeModel'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.response'
+      summary: Create new employee
+      tags:
+      - new-employee
+  /emp/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete Empoyee by id
+      parameters:
+      - description: Emplopyee object id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.response'
+      summary: Delete Empoyee by id
+      tags:
+      - delete-employee
+    put:
+      consumes:
+      - application/json
+      description: Update Empoyee by id
+      parameters:
+      - description: Update Emplopyee
+        in: body
+        name: employee
+        required: true
+        schema:
+          $ref: '#/definitions/daos.EmployeeModel'
+      - description: Emplopyee object id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.response'
+      summary: Update Empoyee by id
+      tags:
+      - update-employee
+  /emp/{name}:
+    get:
+      consumes:
+      - application/json
+      description: Get details of one employee of name
+      parameters:
+      - description: Emplopyee name
+        in: path
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/daos.Employee'
+      summary: Get details of one employee of name
+      tags:
+      - employee-by-name
+swagger: "2.0"

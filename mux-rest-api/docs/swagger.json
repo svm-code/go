@@ -1,0 +1,236 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a simple crud opration for employee",
+        "title": "E.M.S. API's",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "API Support",
+            "email": "suraj.more@quickheal.com"
+        },
+        "license": {
+            "name": "Quick Heal",
+            "url": "https://www.quickheal.com/useful-tools"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/",
+    "paths": {
+        "/emp": {
+            "get": {
+                "description": "Get details of all employees",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "all-employes"
+                ],
+                "summary": "Get details of all employees",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/daos.Employee"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create new employee",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "new-employee"
+                ],
+                "summary": "Create new employee",
+                "parameters": [
+                    {
+                        "description": "Create Emplopyee",
+                        "name": "employee",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/daos.EmployeeModel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/utils.response"
+                        }
+                    }
+                }
+            }
+        },
+        "/emp/{id}": {
+            "put": {
+                "description": "Update Empoyee by id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "update-employee"
+                ],
+                "summary": "Update Empoyee by id",
+                "parameters": [
+                    {
+                        "description": "Update Emplopyee",
+                        "name": "employee",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/daos.EmployeeModel"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "description": "Emplopyee object id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/utils.response"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete Empoyee by id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "delete-employee"
+                ],
+                "summary": "Delete Empoyee by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Emplopyee object id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/utils.response"
+                        }
+                    }
+                }
+            }
+        },
+        "/emp/{name}": {
+            "get": {
+                "description": "Get details of one employee of name",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "employee-by-name"
+                ],
+                "summary": "Get details of one employee of name",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Emplopyee name",
+                        "name": "name",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/daos.Employee"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "daos.Employee": {
+            "type": "object",
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "deptId": {
+                    "type": "integer"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "integer"
+                }
+            }
+        },
+        "daos.EmployeeModel": {
+            "type": "object",
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "deptId": {
+                    "type": "integer"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "integer"
+                }
+            }
+        },
+        "utils.response": {
+            "type": "object",
+            "properties": {
+                "data": {},
+                "result": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
