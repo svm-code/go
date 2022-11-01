@@ -1,6 +1,3 @@
-# Steps to run project
-#go mod init <...>
-
 # Dependancies
 go get -u github.com/gorilla/mux 
 
@@ -23,5 +20,4 @@ swag init
 go run main.go
 
 # Open URL in Browser
-http://localhost:8080
-
+http://localhost:8080/swagger/index.html
