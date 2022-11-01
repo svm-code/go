@@ -1,0 +1,52 @@
+definitions:
+  main.Employee:
+    properties:
+      address:
+        type: string
+      deptId:
+        type: integer
+      email:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      phone:
+        type: integer
+    type: object
+info:
+  contact: {}
+paths:
+  /emp:
+    get:
+      consumes:
+      - application/json
+      description: list of all employee
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/main.Employee'
+            type: array
+      summary: It returns the list of employee
+      tags:
+      - List Of All Employee
+  /emp/{id}:
+    get:
+      consumes:
+      - application/json
+      description: It will get employee detais for ID
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.Employee'
+      summary: It returns the list of employee
+      tags:
+      - Get Employee By Id
+swagger: "2.0"
