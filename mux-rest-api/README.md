@@ -1,6 +1,3 @@
-# Steps to run project
-#go mod init <...>
-
 # Dependancies
 go get -u github.com/gorilla/mux 
 
@@ -16,3 +13,5 @@ go get -u github.com/swaggo/swag/cmd/swag
 
 go get -u github.com/swaggo/http-swagger
 
+# Swagger doc
+swag init
